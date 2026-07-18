@@ -1,0 +1,68 @@
+/* =========================================================
+   RESPONSIVE STYLES
+   ========================================================= */
+
+/* ---- Tablets ---- */
+@media (max-width: 900px) {
+  .section { padding: 90px 6vw; }
+  .gallery { columns: 2 220px; }
+  .reasons-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  .counter-item { min-width: 90px; padding: 18px 20px; }
+  .counter-number { font-size: 2.1rem; }
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 600px) {
+  .section { padding: 70px 5vw; }
+
+  .welcome-title { font-size: clamp(3rem, 16vw, 4.5rem); }
+  .welcome-subtitle { font-size: 1rem; }
+  .enter-btn { padding: 15px 30px; font-size: 0.95rem; }
+
+  .gallery { columns: 1 100%; }
+
+  .timeline-list { padding-left: 26px; }
+  .timeline-item { padding-left: 18px; }
+  .timeline-item::before { left: -38px; width: 30px; height: 30px; font-size: 0.9rem; }
+
+  .reasons-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .reason-card { padding: 16px; font-size: 0.92rem; }
+
+  .counter-grid { gap: 10px; }
+  .counter-item { min-width: 76px; padding: 14px 12px; }
+  .counter-number { font-size: 1.6rem; }
+  .counter-label { font-size: 0.65rem; }
+
+  .notes-board { gap: 16px; }
+  .sticky-note { width: 44vw; min-width: 140px; min-height: 140px; padding: 16px 12px; font-size: 0.9rem; }
+
+  .message-card { padding: 32px 22px; }
+  .message-text { font-size: 1.05rem; min-height: 60px; }
+  .heart-btn { width: 66px; height: 66px; font-size: 1.6rem; }
+
+  .ending-section { margin: 24px 4vw 60px; padding: 70px 6vw; border-radius: var(--radius-md); }
+  .ending-title { font-size: clamp(1.5rem, 7vw, 2.2rem); }
+
+  .music-toggle { bottom: 14px; right: 14px; padding: 10px 14px; font-size: 0.75rem; }
+  .music-toggle .music-label { display: none; }
+
+  .lightbox-nav { width: 42px; height: 42px; font-size: 1.4rem; }
+  .lightbox-close { width: 38px; height: 38px; }
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+
+  .letter-rose { font-size: 1.8rem; top: -22px; }
+}
+
+/* ---- Small phones ---- */
+@media (max-width: 380px) {
+  .welcome-title { font-size: 3rem; }
+  .section-title { font-size: 2rem; }
+  .sticky-note { width: 100%; }
+  .counter-grid { grid-template-columns: repeat(2, 1fr); display: grid; }
+}
+
+/* ---- Landscape short screens ---- */
+@media (max-height: 480px) and (orientation: landscape) {
+  .welcome-section { min-height: 120vh; }
+}

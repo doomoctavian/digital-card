@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>To My Love</title>
+<meta name="description" content="A little love letter, made just for you.">
+
+<!-- Fonts: handwritten heading font + elegant body font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Great+Vibes&family=Quicksand:wght@300;400;500;600;700&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<link rel="icon" href="favicon/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<!-- Cursor trail canvas -->
+<canvas id="cursor-canvas" aria-hidden="true"></canvas>
+
+<!-- Heart rain overlay -->
+<div id="heart-rain" class="heart-rain" aria-hidden="true"></div>
+
+<!-- Floating background elements (hearts, petals, sparkles, butterflies) -->
+<div id="floating-layer" class="floating-layer" aria-hidden="true"></div>
+
+<!-- Music toggle button -->
+<button id="music-toggle" class="music-toggle" aria-label="Play our song">
+  <span class="music-icon">🎵</span>
+  <span class="music-label">Play Our Song</span>
+</button>
+<audio id="bg-music" loop preload="none">
+  <!-- Replace with your song. See README "How to replace music". -->
+  <source src="assets/music/our-song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ================= WELCOME / INTRO ================= -->
+<section id="welcome" class="welcome-section" aria-label="Welcome">
+  <div class="stars-layer" aria-hidden="true"></div>
+  <div class="welcome-glow" aria-hidden="true"></div>
+  <div class="welcome-content">
+    <p class="eyebrow">a little something for</p>
+    <h1 class="welcome-title">My Love</h1>
+    <p class="welcome-subtitle">And here i win the "I love you more" competition. <br>Let me show you how.</p>
+    <button id="enter-btn" class="enter-btn">
+      <span>Open Your Gift</span>
+      <span class="enter-heart">💗</span>
+    </button>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <span></span>
+  </div>
+</section>
+
+<main id="main-content" class="main-content">
+
+  <!-- ================= LOVE LETTER ================= -->
+  <section id="letter" class="section letter-section" aria-label="Love Letter">
+    <p class="section-eyebrow">read this first</p>
+    <h2 class="section-title">A Letter, Just for You</h2>
+    <div class="letter-frame">
+      <div class="letter-rose rose-left" aria-hidden="true">🌹</div>
+      <div class="letter-rose rose-right" aria-hidden="true">🌹</div>
+      <div class="letter-paper">
+        <img src="assets/images/love-letter.png" alt="A handwritten love letter" class="letter-image" loading="lazy">
+      </div>
+      <p class="letter-caption">Written with my whole heart, just for you 💌</p>
+    </div>
+  </section>
+
+  <!-- ================= PHOTO MEMORIES ================= -->
+  <section id="memories" class="section memories-section" aria-label="Photo Memories">
+    <p class="section-eyebrow">close to my heart</p>
+    <h2 class="section-title">Photo Memories</h2>
+    <p class="section-subtitle">Every picture, a piece of my heart.</p>
+
+    <div id="gallery" class="gallery"></div>
+  </section>
+
+  <!-- ================= TIMELINE ================= -->
+  <section id="timeline" class="section timeline-section" aria-label="Our Timeline">
+    <p class="section-eyebrow">how it began</p>
+    <h2 class="section-title">Our Story So Far</h2>
+
+    <div id="timeline-list" class="timeline-list"></div>
+  </section>
+
+  <!-- ================= REASONS I LOVE YOU ================= -->
+  <section id="reasons" class="section reasons-section" aria-label="Reasons I Love You">
+    <p class="section-eyebrow">Affirmations of Love</p>
+    <h2 class="section-title">Reasons I Love You</h2>
+    <div id="reasons-grid" class="reasons-grid"></div>
+  </section>
+
+  <!-- ================= LOVE COUNTER ================= -->
+  <section id="counter" class="section counter-section" aria-label="Love Counter">
+    <div class="counter-card">
+      <p class="section-eyebrow light">still counting</p>
+      <h2 class="section-title light">Loving You For</h2>
+      <div class="counter-grid">
+        <div class="counter-item">
+          <span id="count-days" class="counter-number">0</span>
+          <span class="counter-label">Days</span>
+        </div>
+        <div class="counter-item">
+          <span id="count-hours" class="counter-number">0</span>
+          <span class="counter-label">Hours</span>
+        </div>
+        <div class="counter-item">
+          <span id="count-minutes" class="counter-number">0</span>
+          <span class="counter-label">Minutes</span>
+        </div>
+        <div class="counter-item">
+          <span id="count-seconds" class="counter-number">0</span>
+          <span class="counter-label">Seconds</span>
+        </div>
+      </div>
+      <p class="counter-footnote">Together Forever.</p>
+    </div>
+  </section>
+
+  <!-- ================= LOVE NOTES (sticky notes) ================= -->
+  <section id="notes" class="section notes-section" aria-label="Love Notes">
+    <p class="section-eyebrow">little reminders</p>
+    <h2 class="section-title">Notes For You</h2>
+    <div id="notes-board" class="notes-board"></div>
+  </section>
+
+  <!-- ================= RANDOM LOVE MESSAGE ================= -->
+  <section id="random-message" class="section random-message-section" aria-label="Random Love Message">
+    <p class="section-eyebrow">need a little reminder?</p>
+    <h2 class="section-title">Tap the Heart</h2>
+    <div class="message-card">
+      <p id="random-message-text" class="message-text">Click the heart, and I'll tell you something sweet. 💕</p>
+      <button id="random-message-btn" class="heart-btn" aria-label="Get a random love message">💖</button>
+    </div>
+  </section>
+
+  <!-- ================= ENDING ================= -->
+  <section id="ending" class="section ending-section" aria-label="Ending">
+    <div class="ending-stars" aria-hidden="true"></div>
+    <div class="ending-glow" aria-hidden="true"></div>
+    <div class="ending-heart" aria-hidden="true">💗</div>
+    <h2 class="ending-title">Thank you for being<br>the most beautiful part<br>of my life.</h2>
+    <p class="ending-subtitle">Here's to us, today and always.</p>
+    <p class="ending-signature">— with all my love</p>
+  </section>
+
+</main>
+
+<!-- Lightbox for gallery -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview" hidden>
+  <button id="lightbox-close" class="lightbox-close" aria-label="Close preview">✕</button>
+  <button id="lightbox-prev" class="lightbox-nav lightbox-prev" aria-label="Previous photo">‹</button>
+  <img id="lightbox-img" src="" alt="" class="lightbox-img">
+  <button id="lightbox-next" class="lightbox-nav lightbox-next" aria-label="Next photo">›</button>
+  <p id="lightbox-caption" class="lightbox-caption"></p>
+</div>
+
+<!-- Secret message easter egg (hidden until unlocked) -->
+<div id="secret-message" class="secret-message" hidden>
+  <div class="secret-message-inner">
+    <button id="secret-close" class="secret-close" aria-label="Close secret message">✕</button>
+    <p class="secret-emoji">✨💌✨</p>
+    <p id="secret-text" class="secret-text"></p>
+  </div>
+</div>
+<p class="secret-hint">Try typing <strong>"love"</strong> anywhere on this page, A lil surprise for my Love</p>
+
+<script src="js/particles.js"></script>
+<script src="js/gallery.js"></script>
+<script src="js/timer.js"></script>
+<script src="js/music.js"></script>
+<script src="js/messages.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
